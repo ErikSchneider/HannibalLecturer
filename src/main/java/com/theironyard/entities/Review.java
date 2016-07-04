@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "reviews")
-public class Reviews {
+public class Review {
 
     @Id
     @GeneratedValue
@@ -20,19 +20,19 @@ public class Reviews {
     String text;
 
     @Column(nullable = false)
-    int lecturerId;
-
-    @Column(nullable = false)
     boolean isGood;
 
-    public Reviews() {
+    @ManyToOne
+    Lecturer lecturer;
+
+    public Review() {
     }
 
-    public Reviews(String author, String text, int lecturerId, boolean isGood) {
+    public Review(String author, String text, boolean isGood, Lecturer lecturer) {
         this.author = author;
         this.text = text;
-        this.lecturerId = lecturerId;
         this.isGood = isGood;
+        this.lecturer = lecturer;
     }
 
     public int getId() {
@@ -59,19 +59,19 @@ public class Reviews {
         this.text = text;
     }
 
-    public int getLecturerId() {
-        return lecturerId;
-    }
-
-    public void setLecturerId(int lecturerId) {
-        this.lecturerId = lecturerId;
-    }
-
     public boolean isGood() {
         return isGood;
     }
 
     public void setGood(boolean good) {
         isGood = good;
+    }
+
+    public Lecturer getLecturer() {
+        return lecturer;
+    }
+
+    public void setLecturer(Lecturer lecturer) {
+        this.lecturer = lecturer;
     }
 }

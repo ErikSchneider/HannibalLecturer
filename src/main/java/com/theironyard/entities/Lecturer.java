@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "lecturers")
-public class Lecturers {
+public class Lecturer {
 
     @Id
     @GeneratedValue
@@ -20,15 +20,15 @@ public class Lecturers {
     String topic;
 
     @Column(nullable = false)
-    String url;
+    String image;
 
-    public Lecturers() {
+    public Lecturer() {
     }
 
-    public Lecturers(String name, String topic, String url) {
+    public Lecturer(String name, String topic, String image) {
         this.name = name;
         this.topic = topic;
-        this.url = url;
+        this.image = image;
     }
 
     public int getId() {
@@ -55,11 +55,11 @@ public class Lecturers {
         this.topic = topic;
     }
 
-    public String getUrl() {
-        return url;
+    public String getImage() {
+        return image;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setImage(String image) {
+        this.image = image;
     }
 }
